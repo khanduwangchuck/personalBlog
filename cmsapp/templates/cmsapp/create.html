@@ -1,0 +1,43 @@
+{% extends 'cmsapp/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+  #container{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding :30px 20px 20px 20px;
+    height:auto;
+    border-radius: 30px;
+    margin-bottom:20px
+    }
+   #container h3{
+    text-align:center
+    }
+</style>
+
+<br>
+<div class="container" id="container">
+    <form method="POST" enctype="multipart/form-data">
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Create Notes</legend>
+            {% csrf_token %}
+            {{form.as_p}}
+        </fieldset>
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Create Post">
+
+
+        </div>
+    </form>
+</div>
+<script>
+    let inputfields = document.getElementsByTagName('input')
+    let bodyField = document.getElementById('id_body')
+       let selectField = document.getElementById('id_category')
+    for(let i=0; i<inputfields.length;i++){
+    inputfields[i].classList.add('form-control')
+    }
+    bodyField.classList.add('form-control')
+    selectField.classList.add('form-select')
+
+</script>
+{% endblock content %}
